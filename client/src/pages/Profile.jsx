@@ -14,6 +14,7 @@ const Profile = () => {
   const [imagePercent, setImagePercent] = useState(0);
   const [imageError, setImageError] = useState(false);
   const [formData, setFormData] = useState({});
+
   useEffect(() => {
     if (image) {
       handleFileUpload(image);
@@ -26,7 +27,7 @@ const Profile = () => {
     const uploadTask = uploadBytesResumable(storageRef, image);
 
     uploadTask.on(
-      "state_changed",
+      'state_changed',
       (snapshot) => {
         const progress =
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
@@ -43,7 +44,7 @@ const Profile = () => {
   return (
     <div className="p-3 max-w-lg mx-auto">
       <h1 className="text-3xl font-semibold text-center my-7">Profile</h1>
-      <form className="flex flex-col gap-4">
+      <form className="flex flex-col gap-3">
         <input
           type="file"
           ref={fileRef}
