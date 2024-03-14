@@ -17,7 +17,7 @@ const ForgotPassword = () => {
             navigate('/login')
         }
     }).catch(err => console.log(err))
-  }
+  }  
 
   return (
     <div className="p-3 max-w-lg mx-auto">
