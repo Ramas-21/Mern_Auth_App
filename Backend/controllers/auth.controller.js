@@ -112,7 +112,7 @@ export const forgotPassword = (req, res) => {
             } else {
               return res.send({Status: "Success"})
             }
-            
+
           });
     })
 }
