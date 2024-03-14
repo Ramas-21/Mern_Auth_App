@@ -55,6 +55,9 @@ const Login = () => {
           className="bg-slate-100 p-3 rounded-lg"
           onChange={handleChange}
         />
+        <Link to="/forgot-password">
+          <span className="text-black opacity-70">Forgot password?</span>
+        </Link>
         <button disabled={loading} className="bg-slate-700 text-white p-3 rounded-lg hover:opacity-95">
           {loading ? 'Please wait...' : 'Sign In'}
         </button>
