@@ -6,7 +6,6 @@ import Register from "./pages/Register";
 import Profile from "./pages/Profile";
 import Header from "./components/Header";
 import PrivateRoute from "./components/PrivateRoute.jsx";
-import ForgotPassword from "./pages/ForgotPassword.jsx";
 export default function App() {
   return (
     <BrowserRouter>
@@ -16,7 +15,6 @@ export default function App() {
         <Route path="/about" element={<About />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
-        <Route path="/forgot-password" element={<ForgotPassword/>}></Route>
         <Route element={<PrivateRoute/>}>
           <Route path="/profile" element={<Profile />}></Route>
         </Route>

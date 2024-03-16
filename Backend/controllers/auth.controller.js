@@ -2,7 +2,6 @@ import User from "../models/userModel.js";
 import bcryptjs from "bcryptjs";
 import { errorHandler } from "../utils/error.js";
 import jwt from "jsonwebtoken";
-import nodemailer from 'nodemailer';
 
 export const signup = async (req, res, next) => {
   const { username, email, password } = req.body;
@@ -82,37 +81,3 @@ export const signout = (req, res) => {
     "access_token".status(200).json({ message: "signed out successfully" })
   );
 };
-
-export const forgotPassword = (req, res) => {
-    const {email} = req.body;
-    User.findOne({email: email})
-    .then(user => {
-        if(!user){
-            return res.send({message: "user does not exist"})
-        }
-        const token = jwt.sign({id: user._id}, process.env.JWT_SECRET, {expiresIn: new Date(Date.now() + 3600000)});
-        var transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-              user: 'lawrecehome21@gmail.com',
-              pass: '0768920011'
-            }
-          });
-          
-          var mailOptions = {
-            from: 'lawrencehome21@gmail.com',
-            to: 'homelawrence512@gmail.com',
-            subject: 'Reset your password',
-            text: `http://localhost:5173/reset-password/${user._id}/${token}`
-          };
-          
-          transporter.sendMail(mailOptions, function(error, info){
-            if (error) {
-              console.log(error);
-            } else {
-              return res.send({Status: "Success"})
-            }
-
-          });
-    })
-}
